@@ -16,12 +16,25 @@ set(Drivers_Headers
     "${CMAKE_CURRENT_LIST_DIR}/cmsis/Device/HDSC/hc32f4xx/Include"
 )
 
-# Drivers Sources
-file(GLOB Drivers_Sources
-#    "${CMAKE_CURRENT_LIST_DIR}/cmsis/Device/HDSC/hc32f4xx/Source/GCC/startup_hc32f460.S"
+# Drivers Sources - 只包含实际使用的模块以减少FLASH占用
+set(Drivers_Sources
+    # CMSIS系统文件
     "${CMAKE_CURRENT_LIST_DIR}/cmsis/Device/HDSC/hc32f4xx/Source/system_hc32f460.c"
-    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/*.c"
-    "${CMAKE_CURRENT_LIST_DIR}/mcu/src/*.c"
+
+    # 基础LL驱动 - 只包含实际使用的模块
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_utility.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_gpio.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_clk.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_interrupts.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_tmr4.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_pwc.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_efm.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_sram.c"
+    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_fcg.c"
+
+    # MCU相关文件
+    "${CMAKE_CURRENT_LIST_DIR}/mcu/src/syscalls.c"
 )
 list(REMOVE_ITEM Drivers_Sources "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_usb.c")
 
