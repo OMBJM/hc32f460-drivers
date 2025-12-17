@@ -27,7 +27,7 @@
                 .syntax     unified
                 .arch       armv7e-m
                 .cpu        cortex-m4
-                .fpu        softvfp
+                .fpu        fpv4-sp-d16
                 .thumb
 
 /*
