@@ -33,7 +33,6 @@ set(Drivers_Sources
     "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_sram.c"
     "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_fcg.c"
     "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_usart.c"
-    "${CMAKE_CURRENT_LIST_DIR}/hc32_ll_driver/src/hc32_ll_adc.c"
 
     # MCU相关文件
     "${CMAKE_CURRENT_LIST_DIR}/mcu/src/syscalls.c"
