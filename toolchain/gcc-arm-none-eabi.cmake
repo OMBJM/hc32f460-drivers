@@ -29,7 +29,8 @@ set(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} -x assembler-with-cpp -MMD -MP")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra -Wpedantic -fdata-sections -ffunction-sections")
 
 set(CMAKE_C_FLAGS_DEBUG "-O0 -g3")
-set(CMAKE_C_FLAGS_RELEASE "-Os -g0")
+# 注：-Os 优化可能导致问题，改用 -O2 进行测试
+set(CMAKE_C_FLAGS_RELEASE "-O2 -g0")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g3")
 set(CMAKE_CXX_FLAGS_RELEASE "-Os -g0")
 
