@@ -230,11 +230,14 @@ SECTIONS
         __StackTop = .;
     } >RAM
 
+    /* 注意: 原来这里有 /DISCARD/ 丢弃 libc.a, libm.a, libgcc.a
+       这会导致标准库函数无法正常链接，引发莫名其妙的启动失败！
+       现在改为只丢弃调试相关的段 */
     /DISCARD/ :
     {
-        libc.a (*)
-        libm.a (*)
-        libgcc.a (*)
+        *(.comment)
+        *(.note*)
+        *(.debug*)
     }
 
     .ARM.attributes 0 : { *(.ARM.attributes) }
