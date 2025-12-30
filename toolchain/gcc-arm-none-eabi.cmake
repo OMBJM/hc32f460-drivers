@@ -26,7 +26,13 @@ set(TARGET_FLAGS "-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${TARGET_FLAGS}")
 set(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} -x assembler-with-cpp -MMD -MP")
+# 基础警告和代码段分离
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra -Wpedantic -fdata-sections -ffunction-sections")
+# 稳定性选项：
+#   -fno-strict-aliasing: 禁用严格别名优化（避免某些指针优化问题）
+#   -fno-omit-frame-pointer: 保留帧指针（便于调试和稳定栈操作）
+#   -fstack-usage: 生成栈使用报告（可选，用于分析）
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-strict-aliasing -fno-omit-frame-pointer")
 
 set(CMAKE_C_FLAGS_DEBUG "-O0 -g3")
 # 注意：-Os（优化体积）与 --gc-sections 配合时可能导致关键代码被错误删除，从而引发开机失败
