@@ -204,6 +204,13 @@ SECTIONS
 
     __bss_end = .;
 
+    .rt_heap (NOLOAD):
+    {
+        . = ALIGN(8);
+        *(.rt_heap)
+        . = ALIGN(8);
+    } >RAM
+
     .ret_ram_bss :
     {
         . = ALIGN(4);
