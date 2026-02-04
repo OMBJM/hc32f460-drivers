@@ -275,6 +275,8 @@ __WEAKDEF void DDL_AssertHandler(const char *file, int line)
 {
     /* Users can re-implement this function to print information */
     DDL_Printf("Wrong parameters value: file %s on line %d\r\n", file, line);
+    (void)file;
+    (void)line;
 
     for (;;) {
     }
