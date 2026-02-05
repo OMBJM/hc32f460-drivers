@@ -92,7 +92,7 @@ do {                                                                           \
 /* Exported function */
 void DDL_AssertHandler(const char *file, int line);
 #else
-#define DDL_ASSERT(x)                   ((void)0U)
+#define DDL_ASSERT(x)                   ((void)(x))
 #endif /* __DEBUG */
 
 #if (LL_PRINT_ENABLE == DDL_ON)
