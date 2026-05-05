@@ -61,6 +61,7 @@ target_compile_definitions(hc32f460 INTERFACE ${Drivers_Defines})
 add_library(hc32f460_driver OBJECT)
 # message(STATUS "Drivers_Sources: ${Drivers_Sources}")
 target_sources(hc32f460_driver PRIVATE ${Drivers_Sources})
+target_compile_options(hc32f460_driver PRIVATE -Wno-unused-parameter)
 target_link_libraries(hc32f460_driver PUBLIC hc32f460)
 
 # Add libraries to the project
