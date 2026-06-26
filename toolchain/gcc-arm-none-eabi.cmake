@@ -37,9 +37,9 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-strict-aliasing -fno-omit-frame-pointer
 set(CMAKE_C_FLAGS_DEBUG "-O0 -g3")
 # 注意：-Os（优化体积）与 --gc-sections 配合时可能导致关键代码被错误删除，从而引发开机失败
 # 改用 -O2（标准优化）更稳定
-set(CMAKE_C_FLAGS_RELEASE "-Os -g0")
+set(CMAKE_C_FLAGS_RELEASE "-Os -g3")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g3")
-set(CMAKE_CXX_FLAGS_RELEASE "-Os -g0")
+set(CMAKE_CXX_FLAGS_RELEASE "-Os -g3")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -fno-rtti -fno-exceptions -fno-threadsafe-statics")
 
@@ -98,5 +98,4 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--print-memory-usage")
 # 消除 RWX 警告并确保标准库正确链接
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-no-warn-rwx-segments")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--start-group -lc -lm -lnosys -Wl,--end-group")
-
 

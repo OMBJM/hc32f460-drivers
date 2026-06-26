@@ -239,12 +239,11 @@ SECTIONS
 
     /* 注意: 原来这里有 /DISCARD/ 丢弃 libc.a, libm.a, libgcc.a
        这会导致标准库函数无法正常链接，引发莫名其妙的启动失败！
-       现在改为只丢弃调试相关的段 */
+       保留 DWARF 调试段，便于 Release ELF 源码级调试；hex/bin 不包含这些段。 */
     /DISCARD/ :
     {
         *(.comment)
         *(.note*)
-        *(.debug*)
     }
 
     .ARM.attributes 0 : { *(.ARM.attributes) }
