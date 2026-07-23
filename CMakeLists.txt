@@ -4,8 +4,7 @@ enable_language(C ASM)
 set(Drivers_Defines
     HC32F460
     USE_DDL_DRIVER
-#    $<$<CONFIG:Debug>:__DEBUG>
-    __DEBUG
+    $<$<CONFIG:Debug>:__DEBUG>
 )
 
 # Drivers Hearders
